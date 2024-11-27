@@ -190,14 +190,52 @@ const ctx3 = document.getElementById('myChart3');
 new Chart(ctx3, {
     type: 'pie',
     data: {
-      labels:piChartArrNames ,
-      datasets: [{
-        label: 'Favorite genres',
-        data: piChartArrMovies,
-        borderWidth: 1
-      }]
+        labels: piChartArrNames,
+        datasets: [{
+            label: 'Favorite genres',
+            data: piChartArrMovies,
+            borderWidth: 1
+        }]
     },
     options: {
-      responsive: true
-    }
-  });
+        responsive: true
+    }
+});
+
+const ctx4 = document.getElementById('myChart4');
+
+
+new Chart(ctx4, {
+    type: 'polarArea',
+    data: {
+        labels: piChartArrNames,
+        datasets: [{
+            label: 'Favorite genres',
+            data: piChartArrMovies,
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true
+    }
+});
+
+// adding watch list
+
+function add() {
+    let filmName = document.getElementById("filmName").value;
+
+    for (let i = 0; i < movieDetails.length; i++) {
+        if (filmName == movieDetails[i].movie) {
+            document.getElementById("addList").innerHTML += `<div class="card" style="width: 18rem;">
+                                                            <img src="${movieDetails[i].image}" class="card-img-top" alt="...">
+                                                            <div class="card-body">
+                                                                <h5 class="card-title">${movieDetails[i].movie}</h5>
+                                                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                                                <a href="${movieDetails[i].imdb_url}" class="btn btn-primary">View on IMDB</a>
+                                                            </div>
+                                                            </div>`
+
+        }
+    }
+}
