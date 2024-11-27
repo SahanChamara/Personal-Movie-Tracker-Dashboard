@@ -56,7 +56,7 @@ let movieDetails = [
 
 console.log(movieDetails);
 
-let card="";
+let card = "";
 movieDetails.forEach(element => {
     card += `<div class="card" style="width: 18rem;">
   <img src="${element.image}" class="card-img-top" alt="...">
@@ -68,7 +68,7 @@ movieDetails.forEach(element => {
 </div>`
 });
 
-document.getElementById("setCard").innerHTML=card;
+document.getElementById("setCard").innerHTML = card;
 
 // rating arr
 let ratingArr = [];
@@ -79,97 +79,125 @@ movieDetails.forEach(element => {
 //chart
 const ctx = document.getElementById('myChart');
 
-  new Chart(ctx, {
+new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: ['The Shawshank Redemption', 'The Godfather', 'The Dark Knight', 'Pulp Fiction', 'The Lord of the Rings: The Return of the King'],
-      datasets: [{
-        label: 'Rating',
-        data: ratingArr,
-        borderWidth: 2,
-        backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(255, 159, 64, 0.2)',
-            'rgba(255, 205, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-        ]
-      }]
+        labels: ['The Shawshank Redemption', 'The Godfather', 'The Dark Knight', 'Pulp Fiction', 'The Lord of the Rings: The Return of the King'],
+        datasets: [{
+            label: 'Rating',
+            data: ratingArr,
+            borderWidth: 2,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(255, 205, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+            ]
+        }]
     },
     options: {
-      scales: {
-        y: {
-          beginAtZero: true
+        scales: {
+            y: {
+                beginAtZero: true
+            }
         }
-      }
     }
-  });
+});
 
 
-  const ctx2 = document.getElementById('myChart2');
+const ctx2 = document.getElementById('myChart2');
 
-  new Chart(ctx2, {
+new Chart(ctx2, {
     type: 'line',
     data: {
-      labels: ['The Shawshank Redemption', 'The Godfather', 'The Dark Knight', 'Pulp Fiction', 'The Lord of the Rings: The Return of the King'],
+        labels: ['The Shawshank Redemption', 'The Godfather', 'The Dark Knight', 'Pulp Fiction', 'The Lord of the Rings: The Return of the King'],
+        datasets: [{
+            label: 'Rating',
+            data: ratingArr,
+            borderWidth: 2
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+
+// Favorite genres pie chart
+
+let favGenArr = [
+    {
+        rank: `Action`,
+        movies: 67
+    },
+    {
+        rank: `Adventure`,
+        movies: 47
+    },
+    {
+        rank: `Comedy`,
+        movies: 74
+    },
+    {
+        rank: `Horror`,
+        movies: 40
+    },
+    {
+        rank: `Drama`,
+        movies: 163
+    },
+    {
+        rank: `Roamntic`,
+        movies: 6
+    },
+    {
+        rank: `Documentry`,
+        movies: 72
+    },
+    {
+        rank: `Western`,
+        movies: 3
+    },
+    {
+        rank: `Perfrmance`,
+        movies: 8
+    },
+    {
+        rank: `Educational`,
+        movies: 1
+    }
+];
+
+
+let piChartArrMovies = [];
+favGenArr.forEach(element => {
+    piChartArrMovies.push(element.movies)
+});
+
+let piChartArrNames = [];
+favGenArr.forEach(element => {
+    piChartArrNames.push(element.rank)
+})
+
+const ctx3 = document.getElementById('myChart3');
+
+
+new Chart(ctx3, {
+    type: 'pie',
+    data: {
+      labels:piChartArrNames ,
       datasets: [{
-        label: 'Rating',
-        data: ratingArr,
-        borderWidth: 2
+        label: 'Favorite genres',
+        data: piChartArrMovies,
+        borderWidth: 1
       }]
     },
     options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
+      responsive: true
+    }
   });
-
-
-  // Favorite genres pie chart
-
-  let favGenArr=[
-    {
-        rank:`Action`,
-        movies:67
-    },
-    {
-        rank:`Adventure`,
-        movies:47
-    },
-    {
-        rank:`Comedy`,
-        movies:74
-    },
-    {
-        rank:`Horror`,
-        movies:40
-    },
-    {
-        rank:`Drama`,
-        movies:163
-    },
-    {
-        rank:`Roamntic`,
-        movies:6
-    },
-    {
-        rank:`Documentry`,
-        movies:72
-    },
-    {
-        rank:`Western`,
-        movies:3
-    },
-    {
-        rank:`Perfrmance`,
-        movies:8
-    },
-    {
-        rank:`Educational`,
-        movies:1
-    }
-  ];
-
